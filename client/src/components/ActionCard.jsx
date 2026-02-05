@@ -5,16 +5,16 @@ const ActionCard = ({ onNavigate }) => {
             <div className="absolute -inset-1 bg-gradient-to-br from-brand-purple to-brand-coral rounded-[2rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
 
             <div
-                onClick={() => onNavigate && onNavigate('convert', 'pdf-to-word')}
+                onClick={() => onNavigate && onNavigate('merge-pdf')}
                 className="relative bg-brand-charcoal border border-white/10 rounded-[2rem] p-12 md:p-20 text-center cursor-pointer hover:border-brand-purple/40 transition-all shadow-2xl"
             >
                 <div className="mb-10 flex justify-center">
                     <div className="w-24 h-24 rounded-3xl bg-white/5 flex items-center justify-center relative border border-white/5 group-hover:bg-white/10 transition-colors">
-                        <span className="material-symbols-outlined text-5xl text-brand-purple group-hover:scale-110 transition-transform duration-500">upload_file</span>
+                        <span className="material-symbols-outlined text-5xl text-brand-purple group-hover:scale-110 transition-transform duration-500">join_inner</span>
                     </div>
                 </div>
 
-                <h2 className="serif-heading text-4xl text-white mb-4">Convert PDF to Word</h2>
+                <h2 className="serif-heading text-4xl text-white mb-4">Merge PDF Documents</h2>
                 <p className="text-slate-500 mb-12 text-sm font-medium">
                     Click to start or <span className="text-white underline underline-offset-8 decoration-slate-600 hover:decoration-white transition-all">browse files</span>
                 </p>

@@ -4,9 +4,12 @@ FROM node:18-alpine
 # Working Directory
 WORKDIR /app
 
+# Install LibreOffice for docx-pdf
+RUN apk add --no-cache libreoffice util-linux font-noto
+
 # Install Dependencies
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Copy Source Code
 COPY . .

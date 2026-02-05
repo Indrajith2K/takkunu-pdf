@@ -5,12 +5,16 @@ import ActionCard from './components/ActionCard';
 import FeatureSection from './components/FeatureSection';
 import PrivacyBanner from './components/PrivacyBanner';
 import Footer from './components/Footer';
-import ConvertPage from './pages/ConvertPage';
-import OrganizePage from './pages/OrganizePage';
 import FeaturesPage from './pages/FeaturesPage';
 import PrivacyPage from './pages/PrivacyPage';
 import AboutPage from './pages/AboutPage';
 import Stats from './components/Stats';
+import MergePdf from './pages/MergePdf';
+import SplitPdf from './pages/SplitPdf';
+import ExtractPdf from './pages/ExtractPdf';
+import RemovePdf from './pages/RemovePdf';
+import JpgToPdf from './pages/JpgToPdf';
+import WordToPdf from './pages/WordToPdf';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -42,16 +46,24 @@ function App() {
   // Render Logic
   const renderPage = () => {
     switch (currentPage) {
-      case 'convert':
-        return <ConvertPage tool={activeTool} onBack={() => navigate('home')} />;
-      case 'organize':
-        return <OrganizePage tool={activeTool} onBack={() => navigate('home')} />;
       case 'features':
         return <FeaturesPage onNavigate={navigate} />;
       case 'privacy':
         return <PrivacyPage onNavigate={navigate} />;
       case 'about':
         return <AboutPage onNavigate={navigate} />;
+      case 'merge-pdf':
+        return <MergePdf onNavigate={navigate} />;
+      case 'split-pdf':
+        return <SplitPdf onNavigate={navigate} />;
+      case 'extract-pdf':
+        return <ExtractPdf onNavigate={navigate} />;
+      case 'remove-pdf':
+        return <RemovePdf onNavigate={navigate} />;
+      case 'jpg-to-pdf':
+        return <JpgToPdf onNavigate={navigate} />;
+      case 'word-to-pdf':
+        return <WordToPdf onNavigate={navigate} />;
       default:
         return (
           <div className="relative min-h-screen">
@@ -79,11 +91,11 @@ function App() {
                 items={[
                   {
                     icon: 'description',
-                    color: 'text-brand-purple',
-                    title: 'PDF to Word',
+                    color: 'text-slate-600',
+                    title: 'PDF to Word (Coming Soon)',
                     description: 'Convert PDF documents to editable Word format with precision.',
-                    toolId: 'pdf-to-word',
-                    category: 'convert'
+                    toolId: null,
+                    category: null
                   },
                   {
                     icon: 'description',
@@ -91,7 +103,7 @@ function App() {
                     title: 'Word to PDF',
                     description: 'Transform Word documents into professional PDF files.',
                     toolId: 'word-to-pdf',
-                    category: 'convert'
+                    category: 'word-to-pdf'
                   },
                   {
                     icon: 'image',
@@ -99,15 +111,15 @@ function App() {
                     title: 'JPG to PDF',
                     description: 'Convert images to PDF format instantly.',
                     toolId: 'jpg-to-pdf',
-                    category: 'convert'
+                    category: 'jpg-to-pdf'
                   },
                   {
                     icon: 'picture_as_pdf',
-                    color: 'text-emerald-400',
-                    title: 'PDF to JPG',
+                    color: 'text-slate-600',
+                    title: 'PDF to JPG (Coming Soon)',
                     description: 'Extract pages from PDF as high-quality images.',
-                    toolId: 'pdf-to-jpg',
-                    category: 'convert'
+                    toolId: null,
+                    category: null
                   },
                 ]}
               />
@@ -125,7 +137,7 @@ function App() {
                     title: 'Merge PDF',
                     description: 'Combine multiple PDF files into one document seamlessly.',
                     toolId: 'merge-pdf',
-                    category: 'organize'
+                    category: 'merge-pdf'
                   },
                   {
                     icon: 'content_cut',
@@ -133,7 +145,7 @@ function App() {
                     title: 'Split PDF',
                     description: 'Divide PDF documents into separate files by pages.',
                     toolId: 'split-pdf',
-                    category: 'organize'
+                    category: 'split-pdf'
                   },
                   {
                     icon: 'table_view',
@@ -141,7 +153,7 @@ function App() {
                     title: 'Extract Pages',
                     description: 'Pull specific pages from PDF documents with precision.',
                     toolId: 'extract-pages',
-                    category: 'organize'
+                    category: 'extract-pdf'
                   },
                   {
                     icon: 'delete',
@@ -149,7 +161,7 @@ function App() {
                     title: 'Remove Pages',
                     description: 'Delete unwanted pages from PDF files effortlessly.',
                     toolId: 'remove-pages',
-                    category: 'organize'
+                    category: 'remove-pdf'
                   },
                 ]}
               />
