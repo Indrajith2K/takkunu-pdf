@@ -1,0 +1,25 @@
+{
+  "name": "takkunu-pdf-server",
+  "version": "1.0.0",
+  "description": "Backend API for takkunu pdf - Student-first PDF utility",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "pdf",
+    "converter",
+    "student",
+    "utility"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
+}

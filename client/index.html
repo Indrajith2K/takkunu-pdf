@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Takkunu PDF | Premium PDF Utility</title>
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: "#050505",
+              charcoal: "#0D0D0F",
+              purple: "#8B5CF6",
+              coral: "#F87171",
+            }
+          },
+          fontFamily: {
+            serif: ["Playfair Display", "serif"],
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+        body {
+          @apply bg-brand-black text-slate-200 antialiased font-sans overflow-x-hidden;
+        }
+      }
+      @layer components {
+        .glass-card {
+          @apply bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300;
+        }
+        .accent-gradient {
+          @apply bg-gradient-to-br from-brand-purple to-brand-coral;
+        }
+        .serif-heading {
+          @apply font-serif;
+        }
+        .main-container {
+          @apply max-w-7xl mx-auto px-6;
+        }
+        .abstract-orb {
+          @apply absolute rounded-full blur-[120px] opacity-10 pointer-events-none;
+        }
+      }
+    </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
