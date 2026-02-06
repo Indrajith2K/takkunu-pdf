@@ -3,8 +3,11 @@ const fs = require('fs');
 const path = require('path');
 const archiver = require('archiver');
 const { cleanupFile } = require('../utils/fileCleanup');
+const incrementApiHit = require('../utils/incrementApiHit');
 
 exports.splitPdf = async (req, res) => {
+    incrementApiHit(); // Track engagement immediately
+
     let zipPath = null;
 
     try {

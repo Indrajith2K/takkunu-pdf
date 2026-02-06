@@ -2,8 +2,11 @@ const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 const path = require('path');
 const { cleanupFiles, cleanupFile } = require('../utils/fileCleanup');
+const incrementApiHit = require('../utils/incrementApiHit');
 
 exports.jpgToPdf = async (req, res) => {
+    incrementApiHit(); // Track engagement immediately
+
     let outputFilePath = null;
     try {
         if (!req.files || req.files.length === 0) {

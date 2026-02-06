@@ -3,8 +3,11 @@ const path = require('path');
 const fs = require('fs');
 const archiver = require('archiver');
 const { cleanupFile, cleanupFiles } = require('../utils/fileCleanup');
+const incrementApiHit = require('../utils/incrementApiHit');
 
 exports.pdfToJpg = async (req, res) => {
+    incrementApiHit(); // Track engagement immediately
+
     let outputZipPath = null;
     let generatedImages = [];
     const inputPath = req.file ? req.file.path : null;

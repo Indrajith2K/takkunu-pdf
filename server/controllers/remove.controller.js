@@ -2,8 +2,11 @@ const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 const path = require('path');
 const { cleanupFile } = require('../utils/fileCleanup');
+const incrementApiHit = require('../utils/incrementApiHit');
 
 exports.removePages = async (req, res) => {
+    incrementApiHit(); // Track engagement immediately
+
     let outputFilePath = null;
     try {
         if (!req.file) {

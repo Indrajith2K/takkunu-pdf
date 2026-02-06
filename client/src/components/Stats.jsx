@@ -1,12 +1,26 @@
 import { useState, useEffect } from 'react';
+import { statsApi } from '../api/stats.api';
 
 const Stats = () => {
-    const [count, setCount] = useState(1245678);
+    const [count, setCount] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
 
+    // Fetch initial count
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCount(prev => prev + Math.floor(Math.random() * 3));
-        }, 2500);
+        const fetchCount = async () => {
+            const total = await statsApi.getGlobalActivity();
+            setCount(total);
+            setIsLoading(false);
+        };
+        fetchCount();
+    }, []);
+
+    // Refresh count every 15 seconds
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            const total = await statsApi.getGlobalActivity();
+            setCount(total);
+        }, 15000); // 15 seconds
         return () => clearInterval(interval);
     }, []);
 
@@ -29,9 +43,15 @@ const Stats = () => {
                     </div>
 
                     <div className="flex items-center">
-                        <span className="font-serif text-6xl md:text-7xl font-bold tracking-tight text-white counter-glow">
-                            {mainPart}<span className="text-brand-purple">{accentPart}</span>
-                        </span>
+                        {isLoading ? (
+                            <span className="font-serif text-6xl md:text-7xl font-bold tracking-tight text-slate-600 animate-pulse">
+                                Loading...
+                            </span>
+                        ) : (
+                            <span className="font-serif text-6xl md:text-7xl font-bold tracking-tight text-white counter-glow">
+                                {mainPart}<span className="text-brand-purple">{accentPart}</span>
+                            </span>
+                        )}
                     </div>
 
                     <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-slate-500 mt-2">
