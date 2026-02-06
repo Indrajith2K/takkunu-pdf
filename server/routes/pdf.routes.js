@@ -8,6 +8,7 @@ const extractController = require('../controllers/extract.controller');
 const removeController = require('../controllers/remove.controller');
 const jpgToPdfController = require('../controllers/jpgToPdf.controller');
 const wordToPdfController = require('../controllers/wordToPdf.controller');
+const pdfToJpgController = require('../controllers/pdfToJpg.controller');
 
 // Merge: Multiple files upload (Max 20)
 router.post('/merge', upload.array('files', 20), mergeController.mergePdfs);
@@ -26,5 +27,8 @@ router.post('/jpg-to-pdf', upload.array('files', 10), jpgToPdfController.jpgToPd
 
 // Word to PDF: Single .docx file
 router.post('/word-to-pdf', upload.single('file'), wordToPdfController.wordToPdf);
+
+// PDF to JPG: Single PDF file -> ZIP of JPGs
+router.post('/to-jpg', upload.single('file'), pdfToJpgController.pdfToJpg);
 
 module.exports = router;
