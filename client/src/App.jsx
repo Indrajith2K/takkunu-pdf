@@ -15,6 +15,7 @@ import ExtractPdf from './pages/ExtractPdf';
 import RemovePdf from './pages/RemovePdf';
 import JpgToPdf from './pages/JpgToPdf';
 import WordToPdf from './pages/WordToPdf';
+import PdfToJpg from './pages/PdfToJpg';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -64,6 +65,8 @@ function App() {
         return <JpgToPdf onNavigate={navigate} />;
       case 'word-to-pdf':
         return <WordToPdf onNavigate={navigate} />;
+      case 'pdf-to-jpg':
+        return <PdfToJpg onNavigate={navigate} />;
       default:
         return (
           <div className="relative min-h-screen">
@@ -115,11 +118,11 @@ function App() {
                   },
                   {
                     icon: 'picture_as_pdf',
-                    color: 'text-slate-600',
-                    title: 'PDF to JPG (Coming Soon)',
+                    color: 'text-emerald-400',
+                    title: 'PDF to JPG',
                     description: 'Extract pages from PDF as high-quality images.',
-                    toolId: null,
-                    category: null
+                    toolId: 'pdf-to-jpg',
+                    category: 'pdf-to-jpg'
                   },
                 ]}
               />
