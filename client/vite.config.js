@@ -9,19 +9,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
+    minify: 'esbuild', // Use esbuild (default, faster than terser)
     rollupOptions: {
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-          'pdf-vendor': ['pdfjs-dist'],
-          'ui-vendor': ['lucide-react', 'clsx', 'tailwind-merge']
+          'ui-vendor': ['lucide-react']
         }
       }
     },
