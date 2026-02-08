@@ -15,11 +15,8 @@ import ExtractPdf from './pages/ExtractPdf';
 import RemovePdf from './pages/RemovePdf';
 import JpgToPdf from './pages/JpgToPdf';
 import WordToPdf from './pages/WordToPdf';
-<<<<<<< HEAD
-=======
 import PdfToJpg from './pages/PdfToJpg';
 import StudyPage from './pages/StudyPage';
->>>>>>> feature/study-mode-improvements
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -57,11 +54,8 @@ function App() {
         return <PrivacyPage onNavigate={navigate} />;
       case 'about':
         return <AboutPage onNavigate={navigate} />;
-<<<<<<< HEAD
-=======
       case 'study':
         return <StudyPage onNavigate={navigate} />;
->>>>>>> feature/study-mode-improvements
       case 'merge-pdf':
         return <MergePdf onNavigate={navigate} />;
       case 'split-pdf':
@@ -74,11 +68,8 @@ function App() {
         return <JpgToPdf onNavigate={navigate} />;
       case 'word-to-pdf':
         return <WordToPdf onNavigate={navigate} />;
-<<<<<<< HEAD
-=======
       case 'pdf-to-jpg':
         return <PdfToJpg onNavigate={navigate} />;
->>>>>>> feature/study-mode-improvements
       default:
         return (
           <div className="relative min-h-screen">
@@ -130,16 +121,11 @@ function App() {
                   },
                   {
                     icon: 'picture_as_pdf',
-                    color: 'text-slate-600',
-                    title: 'PDF to JPG (Coming Soon)',
+                    color: 'text-emerald-400',
+                    title: 'PDF to JPG',
                     description: 'Extract pages from PDF as high-quality images.',
-<<<<<<< HEAD
-                    toolId: null,
-                    category: null
-=======
                     toolId: 'pdf-to-jpg',
                     category: 'pdf-to-jpg'
->>>>>>> feature/study-mode-improvements
                   },
                 ]}
               />

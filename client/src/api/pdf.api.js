@@ -1,13 +1,40 @@
 import axios from 'axios';
 
-const API_BASE_URL = "https://takkunu-pdf-server.onrender.com";
+// Use environment variable for API base URL, fallback to Render deployment
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://takkunu-pdf-server.onrender.com";
 
 const api = axios.create({
     baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'multipart/form-data',
     },
+    timeout: 60000, // 60 second timeout for large file uploads
 });
+
+// Add request interceptor for debugging in development
+if (import.meta.env.DEV) {
+    api.interceptors.request.use(
+        (config) => {
+            console.log(`🔵 API Request: ${config.method?.toUpperCase()} ${config.url}`);
+            return config;
+        },
+        (error) => {
+            console.error('🔴 API Request Error:', error);
+            return Promise.reject(error);
+        }
+    );
+
+    api.interceptors.response.use(
+        (response) => {
+            console.log(`🟢 API Response: ${response.config.url}`, response.status);
+            return response;
+        },
+        (error) => {
+            console.error('🔴 API Response Error:', error.response?.status, error.message);
+            return Promise.reject(error);
+        }
+    );
+}
 
 export const pdfApi = {
     // Merge: Upload multiple files
@@ -18,7 +45,7 @@ export const pdfApi = {
         });
 
         const response = await api.post('/api/pdf/merge', formData, {
-            responseType: 'blob', // Important for file download
+            responseType: 'blob',
         });
         return response.data;
     },
@@ -80,8 +107,6 @@ export const pdfApi = {
             responseType: 'blob',
         });
         return response.data;
-<<<<<<< HEAD
-=======
     },
 
     // PDF to JPG: Upload single PDF file -> ZIP
@@ -93,6 +118,7 @@ export const pdfApi = {
             responseType: 'blob',
         });
         return response.data;
->>>>>>> feature/study-mode-improvements
     }
 };
+
+export default api;

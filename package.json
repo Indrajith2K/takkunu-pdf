@@ -2,12 +2,29 @@
     "name": "takkunu-pdf-root",
     "version": "1.0.0",
     "private": true,
+    "description": "Takkunu PDF - Privacy-first PDF utility SaaS",
     "scripts": {
         "dev": "cd client && npm run dev",
         "build": "cd client && npm install && npm run build",
-        "preview": "cd client && npm run preview"
+        "preview": "cd client && npm run preview",
+        "verify": "node verify-deployment.js",
+        "verify:custom": "node verify-deployment.js"
     },
     "engines": {
-        "node": ">=18.0.0"
-    }
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Indrajith2K/takkunu-pdf.git"
+    },
+    "keywords": [
+        "pdf",
+        "converter",
+        "merge",
+        "split",
+        "saas"
+    ],
+    "author": "Takkunu PDF",
+    "license": "MIT"
 }

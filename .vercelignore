@@ -1,0 +1,31 @@
+# Server directory (backend is on Render, not Vercel)
+server/
+
+# Documentation
+*.md
+!README.md
+
+# Development files
+.env.local
+.env.development
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Node modules (will be installed during build)
+node_modules/
+
+# Build artifacts (will be generated)
+client/dist/
+client/build/
+
+# Temporary files
+client/temp/
+*.tmp
+*.swp
