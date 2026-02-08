@@ -12,6 +12,7 @@ const Navbar = ({ onNavigate, current }) => {
 
     const navLinks = [
         { name: 'Tools', id: 'home' },
+        { name: 'Study', id: 'study' },
         { name: 'Features', id: 'features' },
         { name: 'Privacy', id: 'privacy' },
         { name: 'About', id: 'about' }

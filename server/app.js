@@ -9,6 +9,7 @@ const initGlobalStats = require('./utils/initGlobalStats');
 
 const pdfRoutes = require('./routes/pdf.routes');
 const statsRoutes = require('./routes/stats.routes');
+const aiRoutes = require('./routes/ai.routes');
 
 const app = express();
 
@@ -61,6 +62,9 @@ app.use('/api/pdf', pdfRoutes);
 
 // Stats Routes
 app.use('/api/stats', statsRoutes);
+
+// AI Routes (Study Mode)
+app.use('/api/ai', aiRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {

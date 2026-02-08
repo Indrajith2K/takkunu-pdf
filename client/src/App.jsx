@@ -16,6 +16,7 @@ import RemovePdf from './pages/RemovePdf';
 import JpgToPdf from './pages/JpgToPdf';
 import WordToPdf from './pages/WordToPdf';
 import PdfToJpg from './pages/PdfToJpg';
+import StudyPage from './pages/StudyPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -53,6 +54,8 @@ function App() {
         return <PrivacyPage onNavigate={navigate} />;
       case 'about':
         return <AboutPage onNavigate={navigate} />;
+      case 'study':
+        return <StudyPage onNavigate={navigate} />;
       case 'merge-pdf':
         return <MergePdf onNavigate={navigate} />;
       case 'split-pdf':
