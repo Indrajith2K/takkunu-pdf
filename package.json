@@ -1,0 +1,13 @@
+{
+    "name": "takkunu-pdf-root",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "cd client && npm run dev",
+        "build": "cd client && npm install && npm run build",
+        "preview": "cd client && npm run preview"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
