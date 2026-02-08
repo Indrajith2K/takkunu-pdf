@@ -80,5 +80,19 @@ export const pdfApi = {
             responseType: 'blob',
         });
         return response.data;
+<<<<<<< HEAD
+=======
+    },
+
+    // PDF to JPG: Upload single PDF file -> ZIP
+    pdfToJpg: async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await api.post('/api/pdf/to-jpg', formData, {
+            responseType: 'blob',
+        });
+        return response.data;
+>>>>>>> feature/study-mode-improvements
     }
 };

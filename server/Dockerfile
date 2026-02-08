@@ -4,8 +4,15 @@ FROM node:18-alpine
 # Working Directory
 WORKDIR /app
 
+<<<<<<< HEAD
 # Install LibreOffice for docx-pdf
 RUN apk add --no-cache libreoffice util-linux font-noto
+=======
+# Install LibreOffice for docx-pdf equivalent (using soffice)
+# Also java-common/openjdk usually required for full LibreOffice functionality in some alpine builds, but 'libreoffice' package handles deps.
+# 'util-linux' for uuid generation if needed by system, 'font-noto' for fonts.
+RUN apk add --no-cache libreoffice util-linux font-noto poppler-utils
+>>>>>>> feature/study-mode-improvements
 
 # Install Dependencies
 COPY package*.json ./
@@ -14,7 +21,7 @@ RUN npm install --omit=dev
 # Copy Source Code
 COPY . .
 
-# Create temp directory manually to ensure it exists
+# Create temp directory manually
 RUN mkdir -p temp
 
 # Environment Variables

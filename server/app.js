@@ -4,7 +4,12 @@ const helmet = require('helmet');
 const path = require('path');
 const fs = require('fs');
 
+const mongoose = require('mongoose');
+const initGlobalStats = require('./utils/initGlobalStats');
+
 const pdfRoutes = require('./routes/pdf.routes');
+const statsRoutes = require('./routes/stats.routes');
+const aiRoutes = require('./routes/ai.routes');
 
 const app = express();
 
@@ -13,6 +18,20 @@ const tempDir = path.join(__dirname, 'temp');
 if (!fs.existsSync(tempDir)) {
     fs.mkdirSync(tempDir, { recursive: true });
 }
+
+// MongoDB Connection (Non-blocking)
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/takkunu-pdf';
+mongoose.connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 5000,
+    socketTimeoutMS: 45000,
+})
+    .then(async () => {
+        console.log('✅ MongoDB Connected');
+        await initGlobalStats();
+    })
+    .catch(err => {
+        console.error('⚠️ MongoDB Connection Failed (non-critical):', err.message);
+    });
 
 // Security & Middleware
 app.use(helmet());
@@ -40,6 +59,12 @@ app.get('/', (req, res) => {
 
 // PDF Routes
 app.use('/api/pdf', pdfRoutes);
+
+// Stats Routes
+app.use('/api/stats', statsRoutes);
+
+// AI Routes (Study Mode)
+app.use('/api/ai', aiRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
